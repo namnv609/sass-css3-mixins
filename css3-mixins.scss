@@ -1,0 +1,236 @@
+$vendorPrefixes: (-webkit-, -moz-, -khtml-, -o-, -ms-) !default;
+
+@mixin css3-prefix($property, $value...) {
+    @each $vendorPrefix in $vendorPrefixes {
+        #{$vendorPrefix}#{$property}: unquote($value);
+    }
+    #{$property}: unquote($value);
+}
+
+@mixin css3-function($property, $function, $value...) {
+    @each $vendorPrefix in $vendorPrefixes {
+        #{$property}: #{$vendorPrefix}#{$function}($value);
+    }
+    #{$property}: #{$function}($value);
+}
+
+// Border radiuses
+@mixin border-radius($radius) {
+    @include css3-prefix(border-radius, $radius);
+}
+@mixin border-top-left-radius($radius) {
+    @include css3-prefix(border-top-left-radius, $radius);
+}
+@mixin border-top-right-radius($radius) {
+    @include css3-prefix(border-top-right-radius, $radius);
+}
+@mixin border-bottom-left-radius($radius) {
+    @include css3-prefix(border-bottom-left-radius, $radius);
+}
+@mixin border-bottom-right-radius($radius) {
+    @include css3-prefix(border-bottom-right-radius, $radius);
+}
+
+// Border images
+@mixin border-image($value) {
+    @include css3-prefix(border-image, $value);
+}
+@mixin border-image-outset($outset) {
+    @include css3-prefix(border-image-outset, $outset);
+}
+@mixin border-image-repeat($repeat) {
+    @include css3-prefix(border-image-repeat, $repeat);
+}
+@mixin border-image-source($source) {
+    @include css3-prefix(border-image-source, $source);
+}
+@mixin border-image-slice($slice-offset) {
+    @include css3-prefix(border-image-slice, $slice-offset);
+}
+@mixin border-image-width($width) {
+    @include css3-prefix(border-image-width, $width);
+}
+
+// Break after
+@mixin break-after($value) {
+    @include css3-prefix(column-break-after, $value);
+}
+@mixin break-before($value) {
+    @include css3-prefix(column-break-before, $value);
+}
+@mixin break-inside($value) {
+    @include css3-prefix(column-break-inside, $value);
+}
+
+// Columns
+@mixin columns($value) {
+    @include css3-prefix(columns, $value);
+}
+@mixin column-count($count) {
+    @include css3-prefix(column-count, $count);
+}
+@mixin column-fill($fill) {
+    @include css3-prefix(column-fill, $fill);
+}
+@mixin column-gap($gap) {
+    @include css3-prefix(column-gap, $gap);
+}
+@mixin column-rule($rule) {
+    @include css3-prefix(column-rule, $rule);
+}
+@mixin column-rule-color($rule-color) {
+    @include css3-prefix(column-rule-color, $rule-color);
+}
+@mixin column-rule-style($rule-style) {
+    @include css3-prefix(columns-rule-style $rule-style);
+}
+@mixin column-rule-width($rule-width) {
+    @include css3-prefix(column-rule-width, $rule-width);
+}
+@mixin column-span($span) {
+    @include css3-prefix(column-span, $span);
+}
+@mixin column-width($width) {
+    @include css3-prefix(column-width, $width);
+}
+
+// Keyframes
+@mixin keyframes($animation-name) {
+    @if index($vendorPrefixes, -webkit-) {
+        @-webkit-keyframes #{$animation-name} {
+            @content
+        }
+    }
+    @if index($vendorPrefixes, -moz-) {
+        @-moz-keyframes #{$animation-name} {
+            @content
+        }
+    }
+    @if index($vendorPrefixes, -ktml-) {
+        @-khtml-keyframes #{$animation-name} {
+            @content
+        }
+    }
+    @if index($vendorPrefixes, -ms-) {
+        @-ms-keyframes #{$animation-name} {
+            @content
+        }
+    }
+    @if index($vendorPrefixes, -o-) {
+        @-o-keyframes #{$animation-name} {
+            @content
+        }
+    }
+    @keyframes #{$animation-name} {
+        @content
+    }
+}
+// Animations
+@mixin animation($animation) {
+    @include css3-prefix(animation, $animation);
+}
+@mixin animation-delay($delay) {
+    @include css3-prefix(animation-delay, $delay);
+}
+@mixin animation-direction($direction) {
+    @include css3-prefix(animation-direction, $direction);
+}
+@mixin animation-duration($duration) {
+    @include css3-prefix(animation-duration, $duration);
+}
+@mixin animation-fill-mode($mode) {
+    @include css3-prefix(animation-fill-mode, $mode);
+}
+@mixin animation-iteration-count($count) {
+    @include css3-prefix(animation-iteration-count, $count);
+}
+@mixin animation-name($name) {
+    @include css3-prefix(animation-name, $name);
+}
+@mixin animation-play-state($state) {
+    @include css3-prefix(animation-play-state, $state);
+}
+@mixin animation-timing-function($timing-function) {
+    @include css3-prefix(animation-timing-function, $timing-function);
+}
+
+// Transitions
+@mixin transition($transition) {
+    @include css3-prefix(transition, $transition);
+}
+@mixin transition-delay($delay) {
+    @include css3-prefix(transition-delay, $delay);
+}
+@mixin transition-duration($duration) {
+    @include css3-prefix(transition-duration, $duration);
+}
+@mixin transition-timing-function($timing-function) {
+    @include css3-prefix(transition-timing-function, $timing-function);
+}
+@mixin transition-property($property) {
+    @include css3-prefix(transition-property, $property);
+}
+
+// Transforms
+@mixin backface-visibility($visibility-state) {
+    @include css3-prefix(backface-visibility, $visibility-state);
+}
+@mixin perspective($length) {
+    @include css3-prefix(perspective, $length);
+}
+@mixin perspective-origin($positions) {
+    @include css3-prefix(perspective-origin, $positions);
+}
+@mixin transform($transform) {
+    @include css3-prefix(transform, $transform);
+}
+@mixin transform-origin($axises) {
+    @include css3-prefix(transform-origin, $axises);
+}
+@mixin transform-style($value) {
+    @include css3-prefix(transform-style, $value);
+}
+
+// Backgrounds
+@mixin background-clip($value) {
+    @include css3-prefix(background-clip, $value);
+}
+@mixin background-origin($value) {
+    @include css3-prefix(background-origin, $value);
+}
+@mixin background-size($size) {
+    @include css3-prefix(background-size, $size);
+}
+
+// Gradients
+@mixin linear-gradient($value...) {
+    @include css3-function(background, linear-gradient, $value);
+}
+@mixin repeating-linear-gradient($value...) {
+    @include css3-function(background, repeating-linear-gradient, $value);
+}
+@mixin radial-gradient($value...) {
+    @include css3-function(background, radial-gradient, $value);
+}
+@mixin repeating-radial-gradient($value...) {
+    @include css3-function(background, repeating-radial-gradient, $value);
+}
+
+// Others
+@mixin appearance($value...) {
+    @include css3-prefix(appearance, $value);
+}
+@mixin box-shadow($offsets...) {
+    @include css3-prefix(box-shadow, $offsets);
+}
+@mixin box-decoration-break($type...) {
+    @include css3-prefix(box-decoration-break, $type);
+}
+@mixin opacity($value) {
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$value * 100});
+    filter: alpha(opacity=#{$value * 100});
+    opacity: $value;
+}
+
+// By NamNV609
+// Github: https://github.com/namnv609/sass-css3-mixins
